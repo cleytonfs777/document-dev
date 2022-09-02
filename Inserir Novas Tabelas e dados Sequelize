@@ -1,0 +1,19 @@
+1. Crie um model na pasta Model contento o database.define
+2. Rode o comando:
+
+npx sequelize-cli migration:generate --name create-symbols
+
+3. Edita a Migration adicionando dados necessarios
+
+4. Rode o comando:
+
+npx sequelize-cli db:migrate
+
+**************************************************************************************************************************
+**************************************************************************************************************************
+**************************************************************************************************************************
+
+
+CRIANDO UMA SEED
+
+1. npx sequelize-cli seed:generate --name default-symbols

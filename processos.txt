@@ -1,0 +1,38 @@
+top - 
+
+O comando top é a maneira mais comum de verificar o uso de processos do sistema e constatar quais deles estão consumindo mais memória ou processamento
+
+ps - 
+pstree -
+kill, killall e pkill -
+
+renice -
+
+Para realizar esse tipo de operação, basta seguir a sintaxe renice novaprioridade -p PID. Se quiséssemos dar mais prioridade a um processo de PID 1516, por exemplo, usaríamos: sudo renice -10 -p 1516. Lembre-se que o sudo exigirá a senha do seu usuário antes de executar o comando.
+
+
+$ sudo lsof -i -P -n
+$ sudo lsof -i -P -n | grep LISTEN
+
+para o processo kill *n pid
+
+p: Mostra as conexões para o protocolo especificado, que pode ser TCP ou UDP.
+u: Lista todas as portas UDP.
+t: Lista todas as portas TCP.
+o: Exibe o temporizadores.
+n: Mostra o número da porta.
+a: Exibe todas as conexões ativas no sistema.
+
+$ sudo nmap -sU -O localhost
+$ sudo nmap -sT -O 1
+
+
+
+VER PROCESSOS E APAGAR ELES:
+
+ps aux | grep python
+
+kill <id>
+
+
+

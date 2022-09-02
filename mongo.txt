@@ -1,0 +1,78 @@
+PARA RODAS O MONGO:
+
+# INICIAR O MONGO:
+sudo systemctl start mongod
+
+# PARAR O MONGO:
+sudo systemctl stop mongod
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+# CRIAR O BANCO DE DADOS
+use pessoasData
+
+# VER OS BANCOS
+show dbs
+
+# INSERIR DADOS
+db.pessoas.insertOne({nome: "Cleyton", idade: 34, profissao:"Programador", esta_empregado: true })
+
+# VER TODAS AS COLLECTIONS CRIADAS
+show collections
+
+# INSERIR MULTIPLOS DADOS EM COLLECTIONS (TEREMOS UM ARRAY DE OBJETOS)
+db.pessoas.insertMany([{nome: "Lucas", idade: 54, profissao:"Encanador", esta_empregado: false },{nome: "Thais", idade: 29, profissao:"Enfermeira", esta_empregado: true }])
+
+# VERIFICAÇÃO DE TODOS OS DADOS
+
+db.pessoas.find()
+
+obs: forma mais estética => db.pessoas.find().pretty()
+
+# UTILIZAÇÃO DE FILTROS
+
+db.pessoa.find({esta_empregado: true})
+
+# NUMERO DE RESULTADOS DESSA PESQUISA
+
+db.pessoas.find({esta_empregado: true}).count()
+
+ou
+
+db.pessoas.find().count()
+
+# ENCONTRAR APENAS UM DOS VALORES
+db.pessoas.findOne({esta_empregado: true}).count()
+
+
+ATUALIZANDO VALORES =>
+                          FILTRO            MUDANÇA DESEJADA
+db.pessoas.updateOne({nome: "Lucas"},{ $set: {esta_empregado: true}})
+
+# ADICIONANDO CAMPOS NÃO EXISTENTE PARA TODOS
+
+                  array vazio(representa todos)
+db.pessoas.updateMany({}, { $set: {salario: 15000}})
+
+
+# DELETANDO DADOS DESEJADOS ATRAVÉŚ DE FILTROS
+db.pessoas.deleteOne({nome: "Lucas"})
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# OPERADORES
+gt = greater then
+gte = greater then or equal
+lt = less then
+lte = less then or equal
+inc = increment
+
+db.pessoas.find({idade: { $gt: 30 } })
+
+
+# OPERADORES PARA UPDATES
+
+                                                      * valor pode ser positivo ou negativo
+db.pessoas.updateOne({nome: "Lucas"},{$inc: {salario: 1000}})

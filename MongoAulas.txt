@@ -1,0 +1,140 @@
+Baixado o arquivo digite o comando para subir a instancia de MongoDB:
+
+=> Na pasta mongodb-linux-x86_64-ubuntu2004-5.0.7/bin
+
+./mongod --dbpath /home/cleyton/Documentos/2.\ CURSOS/8.\ LUIZ\ TOOLS/NODE_E_MONGO/mongodb-linux-x86_64-ubuntu2004-5.0.7/data
+
+COMANDOS 
+
+db.clientes.find() -> Retorna os dados da tabela
+db.clientes.count() -> Conta quantos elementos existem
+show databases -> Mostra todos os banco de dados criados
+use aula01 -> Seleciona o banco a ser utilizado. Se o banco não existir ele sera automaticamente criado
+
+db.insert({nome: "Marcelo", idade:55}) -> Insere dado no banco
+
+INSERÇÃO EM LOTES
+
+db.clientes.insert([{nome: "Luiz", idade: 44, cidade:"São Paulo"},{nome: "Rogério", uf:"ES"}])
+
+db.clientes.find({idade:34}).pretty() -> Com a utilização de filtros
+
+db.clientes.find({nome: /cleyton/i}).pretty() -> Aceita expressão regular como filtro
+
+COMANDO UPDATE =
+
+* (DOIS OBJETOS) primeiro campo se informa o que encontrar atraves de filtro e o segundo o que substituir
+
+db.clientes.update({nome: "Cleyton"},{idade: 100})
+* SUBSTITUI TUDO
+
+Para escolher um só digite updateone
+
+db.clientes.updateOne({nome: "Cleyton"},{idade: 100})
+
+DELETAR ARQUIVOS
+*Prefira fazer pelo _id
+
+db.clientes.remove({_id : ObjectId("625ab74c4cdcdba7a0a0fd63")})
+
+USANDO EXPRESSÃO regular
+
+db.clientes.find({nome:{$regex: /a/} }).pretty()
+
+db.clientes.find({}).skip(n) -> Ignora os n primeiros elementos
+db.clientes.find({}).limit(n) -> Retorna apenas n valores
+db.clientes.find({}).sort({idade: 1}) -> A ordem de exibição de elementos (1: crescente e -1 decrescente)
+
+
+
+
+
+
+
+
+
+
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+PARA RODAS O MONGO:
+
+# INICIAR O MONGO:
+sudo systemctl start mongod
+
+# PARAR O MONGO:
+sudo systemctl stop mongod
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+# CRIAR O BANCO DE DADOS
+use pessoasData
+
+# VER OS BANCOS
+show dbs
+
+# INSERIR DADOS
+db.pessoas.insertOne({nome: "Cleyton", idade: 34, profissao:"Programador", esta_empregado: true })
+
+# VER TODAS AS COLLECTIONS CRIADAS
+show collections
+
+# INSERIR MULTIPLOS DADOS EM COLLECTIONS (TEREMOS UM ARRAY DE OBJETOS)
+db.pessoas.insertMany([{nome: "Lucas", idade: 54, profissao:"Encanador", esta_empregado: false },{nome: "Thais", idade: 29, profissao:"Enfermeira", esta_empregado: true }])
+
+# VERIFICAÇÃO DE TODOS OS DADOS
+
+db.pessoas.find()
+
+obs: forma mais estética => db.pessoas.find().pretty()
+
+# UTILIZAÇÃO DE FILTROS
+
+db.pessoa.find({esta_empregado: true})
+
+# NUMERO DE RESULTADOS DESSA PESQUISA
+
+db.pessoas.find({esta_empregado: true}).count()
+
+ou
+
+db.pessoas.find().count()
+
+# ENCONTRAR APENAS UM DOS VALORES
+db.pessoas.findOne({esta_empregado: true}).count()
+
+
+ATUALIZANDO VALORES =>
+                          FILTRO            MUDANÇA DESEJADA
+db.pessoas.updateOne({nome: "Lucas"},{ $set: {esta_empregado: true}})
+
+# ADICIONANDO CAMPOS NÃO EXISTENTE PARA TODOS
+
+                  array vazio(representa todos)
+db.pessoas.updateMany({}, { $set: {salario: 15000}})
+
+
+# DELETANDO DADOS DESEJADOS ATRAVÉŚ DE FILTROS
+db.pessoas.deleteOne({nome: "Lucas"})
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# OPERADORES
+gt = greater then
+gte = greater then or equal
+lt = less then
+lte = less then or equal
+inc = increment
+
+db.pessoas.find({idade: { $gt: 30 } })
+
+
+# OPERADORES PARA UPDATES
+
+                                                      * valor pode ser positivo ou negativo
+db.pessoas.updateOne({nome: "Lucas"},{$inc: {salario: 1000}})

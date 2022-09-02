@@ -1,0 +1,56 @@
+Atalhos Git e GitHub
+
+git init - Inicializa o git em uma pasta de projeto
+git status - verifica o status dos arquivos dentro do projeto
+git add "arquivo.txt" - Adiciona um arquivo ao repositório.
+git add . - adiciona todos os arquivos não adicionados ao controle de versões
+git commit -m "mensagem do que foi alterado"
+
+git config --global user.name cleytonfs777
+git config --global user.email cleyton.fs777@gmail.com
+
+Criar novo repositório no GitHub
+
+Copiar o link do repositório
+
+git remote add origin <link-repositorio> - Define para onde o código git será enviado no GitHub
+
+git push
+
+OBS: Dará uma msg de erro. Basta copiar o comando sugerido e colar e apertar Enter
+
+git pull irá atualizar para a versão que está no repositório
+
+git reflog - Mostra o histórico de versões
+
+OBS: o número que aparece no início de cada versão é o id que será utilizado para resetar se for o caso.
+
+git reset --hard <id> Retorna a versão escolhida
+
+git branch - lista todas as branchs existentes
+
+git branch <nome-da-branch> - cria uma nova branch
+OBS: Normalmente usa o nome staging
+
+git checkout branch <nome-da-branch>git checkout 
+
+git checkout < numero do commit >
+
+Para fazer Merge de Branchs diferentes
+1. Acesse a branch que irá receber os arquivos
+2. Dentro da Branch master rode: git pull => Esse comando irá puxar as informações mais atuais de seu servidor a máquina local
+3. Execute: git merge <branch-que-sera-puxada>
+4. git push
+
+
+
+CRIAR UMA NOVA BRANCH EM 1 LINHA
+
+git checkout -b <nome-da-branch-que-quer-criar> <nome-da-branch-que-sera-copiada>
+
+
+SE DER ERRO NO PUSH EXECUTAR
+
+git push link.git master -f
+
+git push https://github.com/cleytonfs777/javascrip_typescript_aulas.git master -f
