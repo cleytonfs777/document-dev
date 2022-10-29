@@ -1,1 +1,2 @@
-
+$ uname -a
+# Traz informações do sistema
