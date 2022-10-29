@@ -1,2 +1,35 @@
 $ uname -a
 # Traz informações do sistema
+
+$ uname -m 
+# Qual é a arquitetura utilizada 
+
+$ cat /proc/meminfo
+# Informações da memória do dispositivo 
+
+$ date
+# A data e hora do sistema
+
+$ whoami
+# Usuário logado
+
+$ id
+# Informações de grupos e usuarios
+
+$ shutdown now
+# Desligar agora
+
+$ shutdown -h 15
+# O dispositivo desliga em 15 min
+
+$ shutdown -C
+# Cancela os agendamentos 
+
+os comandos:
+$reboot
+$logout 
+Funcionam da mesma forma que o shutdown
+
+$ telinit 0
+# Desliga dispositivo 
+
